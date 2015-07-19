@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
 
   root 'sessions#login'
+
     get '/login', to: "sessions#login", as: 'login'
 
     get '/signup', to: "sessions#signup", as: 'signup'
@@ -14,7 +15,15 @@ Rails.application.routes.draw do
 
     delete '/logout', to: "sessions#logout", as: "logout"
 
-    get '/teams/index', to: "teams#index"
+    get '/teams/new', to: "teams#new"
+
+    post '/teams/new', to: "teams#create"
+
+    get '/teams/:id/edit', to: "teams#edit", as:"teams_edit"
+
+    get '/teams/:id', to: "teams#show", as:"teams"
+    put '/teams/:id', to: "teams#update"
+    patch '/teams/:id', to: "teams#update"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
