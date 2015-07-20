@@ -1,4 +1,4 @@
 class Team < ActiveRecord::Base
 	belongs_to :user
-	has_many :superheroes, dependent: :destroy
+	# has_many :superheroes, dependent: :destroy
 end

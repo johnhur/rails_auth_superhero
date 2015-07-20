@@ -1,7 +1,7 @@
 class TeamsController < SessionsController
   # def index
   # end
-  before_action :find_user, only: [:index, :new, :create]
+  before_action :find_user, only: [:index, :new, :create, :destroy]
   before_action :find_team, only: [:show, :edit, :update, :destroy]
 
 
@@ -45,6 +45,11 @@ class TeamsController < SessionsController
 		end
   end
 
+  def destroy
+
+    @team.destroy
+    redirect_to user_teams_path(@team), notice: "#{@team.name} has been deleted."
+  end
 
   private
 

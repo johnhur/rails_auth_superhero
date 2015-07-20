@@ -13,6 +13,7 @@
 		Team Id: <%= t.id %>
 		<%= link_to "show", team_path(t)%>
 		<%= link_to "edit", edit_team_path(t)%>
+		<%= link_to "X", team_path(t), method: :delete %>
 	</li>
 <% end %>
 </ul>
