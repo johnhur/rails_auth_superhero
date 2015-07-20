@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   def prevent_login_signup
     if session[:user_id]
-      redirect_to home_path, notice: "You are already logged in"
+      redirect_to user_teams_path(session[:user_id]), notice: "You are already logged in"
       # what do you think redirect_to :back does?
     end
   end

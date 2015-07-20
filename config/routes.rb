@@ -1,30 +1,40 @@
 Rails.application.routes.draw do
 
+  # get 'superheroes/index'
+
+  # get 'superheroes/new'
+
+  # get 'superheroes/edit'
+
+  # get 'superheroes/show'
 
   root 'sessions#login'
-
     get '/login', to: "sessions#login", as: 'login'
-
-    get '/signup', to: "sessions#signup", as: 'signup'
-
     post '/login', to: "sessions#attempt_login"
-
-    post '/signup', to: "sessions#create"
-
-    get '/home', to: "sessions#home", as: 'home'
-
     delete '/logout', to: "sessions#logout", as: "logout"
 
-    get '/teams/new', to: "teams#new"
+  resources :users do
+    resources :teams, shallow: true
+  end
 
-    post '/teams/new', to: "teams#create"
+  resources :superheroes
 
-    get '/teams/:id/edit', to: "teams#edit", as:"teams_edit"
 
-    get '/teams/:id', to: "teams#show", as:"teams"
-    put '/teams/:id', to: "teams#update"
-    patch '/teams/:id', to: "teams#update"
+    #get '/signup', to: "sessions#signup", as: 'signup'
+    #post '/signup', to: "sessions#create"
+    #get '/home', to: "sessions#home", as: 'home'
+    
+
+    # get '/teams/new', to: "teams#new"
+    # post '/teams/new', to: "teams#create"
+    # get '/teams/:id/edit', to: "teams#edit", as:"teams_edit"
+    # get '/teams/:id', to: "teams#show", as:"teams"
+    # put '/teams/:id', to: "teams#update"
+    # patch '/teams/:id', to: "teams#update"
+    # delete '/teams/:id', to: "teams#destroy"
   
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

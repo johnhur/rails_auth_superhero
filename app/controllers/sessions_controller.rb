@@ -2,21 +2,21 @@ class SessionsController < ApplicationController
  before_action :confirm_logged_in, only: [:home]
  before_action :prevent_login_signup, only: [:login]
 
-  def create
-  	@user = User.create(user_params)
-  		if @user.save
-  			session[:user_id] = @user.id
-  			flash[:success] = "You are now logged in!"
-  			redirect_to home_path
-  		else
-  			flash[:notice] = "Create Failed!"
-  			render :signup
-  		end
-  end
+  # def create
+  # 	@user = User.create(user_params)
+  # 		if @user.save
+  # 			session[:user_id] = @user.id
+  # 			flash[:success] = "You are now logged in!"
+  # 			redirect_to home_path
+  # 		else
+  # 			flash[:notice] = "Create Failed!"
+  # 			render :signup
+  # 		end
+  # end
 
-  def signup
-    @user = User.new
-  end
+  # def signup
+  #   @user = User.new
+  # end
 
   def login
     # render :login
@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
   			if authorized_user
   				session[:user_id] = authorized_user.id
   				flash[:success] = "You are now logged in!"
-  				redirect_to home_path
+  				redirect_to user_teams_path(authorized_user)
   			else
   				redirect_to login_path, notice: "Login Failed."
   			end
@@ -44,9 +44,9 @@ class SessionsController < ApplicationController
       redirect_to login_path
   end
 
-  def home
-    @teams = Team.all
-  end
+  # def home
+  #   @teams = Team.all
+  # end
 
   private
   def user_params

@@ -1,7 +1,7 @@
 <h1>Teams#edit</h1>
 <p>Find me in app/views/teams/edit.html.erb</p>
 
-<%= form_for(@team, url: teams_path) do |f|%>
+<%= form_for(@team, url: team_path) do |f|%>
 <p>
 	Name:: <%= f.text_field :name, autofocus: true %>
 </p>
@@ -11,6 +11,6 @@
 <p>
 	<%= f.submit "Update Team", class: "btn btn-primary" %>
 </p>
-<%= link_to "Back to Teams", home_path%>
+<%= link_to "Back to Teams", user_teams_path(f)%>
 <% end %>
 
